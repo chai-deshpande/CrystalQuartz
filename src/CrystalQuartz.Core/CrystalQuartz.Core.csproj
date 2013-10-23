@@ -61,6 +61,7 @@
       <HintPath>..\packages\Quartz.2.1.2\lib\net35\Quartz.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -80,9 +81,12 @@
     <Compile Include="Domain\ActivityStatus.cs" />
     <Compile Include="Domain\JobDetailsData.cs" />
     <Compile Include="Domain\JobGroupData.cs" />
+    <Compile Include="Domain\JobLogData.cs" />
     <Compile Include="Domain\SchedulerStatus.cs" />
     <Compile Include="Domain\TriggerGroupData.cs" />
+    <Compile Include="IJobLogProvider.cs" />
     <Compile Include="ISchedulerDataProvider.cs" />
+    <Compile Include="JobLogProvider.cs" />
     <Compile Include="SchedulerProviders\ISchedulerProvider.cs" />
     <Compile Include="Domain\JobData.cs" />
     <Compile Include="Domain\NamedObject.cs" />

@@ -99,6 +99,7 @@
     <Compile Include="FrontController\ViewRendering\RazorViewEngine.cs" />
     <Compile Include="FrontController\ViewRendering\VelocityViewEngine.cs" />
     <Compile Include="Helpers\ExceptionHelper.cs" />
+    <Compile Include="Processors\JobLogsFiller.cs" />
     <Compile Include="Processors\MasterFiller.cs" />
     <Compile Include="Processors\OperationFiller.cs" />
     <Compile Include="FrontController\FrontControllerHandler.cs" />
@@ -200,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <EmbeddedResource Include="Templates\jobLogs.vm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

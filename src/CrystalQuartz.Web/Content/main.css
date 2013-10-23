@@ -172,7 +172,7 @@ H2 DIV.status
 	margin: 0;
 }
 
-#jobsContainer .job, #jobDataMap, #jobProperties
+#jobsContainer .job, #jobDataMap, #jobProperties, #jobLogs
 {
 	background: none repeat scroll 0 0 #FFFFFF;
 	margin: 10px 0 0;

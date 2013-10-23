@@ -1,0 +1,35 @@
+﻿#if ($jobLogs == $null)
+<div id='jobsContainer'>
+  Job logs not found. The logs may not have been captured correctly or the job may not have been executed till now.
+</div>
+#else
+<div id='jobsContainer'>
+  #set($job = $jobDetails.PrimaryData)
+  #parse("CrystalQuartz.Web.Templates.jobPanel.vm")
+</div>
+
+<div id='jobLogs'>
+  <h3>Job Logs</h3>
+  #foreach($log in $jobLogs)
+  #nodata
+  <div class='none'>No entries</div>
+  #beforeall
+  <table class="data">
+    <thead>
+      <tr>
+        <th style='width: 15%;'>Time Stamp</th>
+        <th>Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      #each
+      <tr>
+        <td>$log.TimeStamp</td>
+        <td>$log.Message</td>
+      </tr>
+      #afterall
+    </tbody>
+  </table>
+  #end
+</div>
+#end

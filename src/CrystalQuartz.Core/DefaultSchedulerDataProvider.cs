@@ -11,10 +11,12 @@ namespace CrystalQuartz.Core
     public class DefaultSchedulerDataProvider : ISchedulerDataProvider
     {
         private readonly ISchedulerProvider _schedulerProvider;
+        private readonly IJobLogProvider _logProvider;
 
-        public DefaultSchedulerDataProvider(ISchedulerProvider schedulerProvider)
+        public DefaultSchedulerDataProvider(ISchedulerProvider schedulerProvider, IJobLogProvider logProvider = null)
         {
             _schedulerProvider = schedulerProvider;
+            _logProvider = logProvider;
         }
 
         public SchedulerData Data
@@ -72,6 +74,16 @@ namespace CrystalQuartz.Core
             detailsData.JobProperties.Add("RequestsRecovery", job.RequestsRecovery);
 
             return detailsData;
+        }
+
+        public IEnumerable<JobLogData> GetJobLogs(string jobName, string group)
+        {
+            if (_logProvider != null)
+            {
+                return _logProvider.GetJobLogs(jobName, group);
+            }
+
+            return new List<JobLogData>();
         }
 
         public SchedulerStatus GetSchedulerStatus(IScheduler scheduler)

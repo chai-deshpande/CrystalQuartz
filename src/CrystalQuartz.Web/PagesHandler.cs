@@ -23,7 +23,7 @@ namespace CrystalQuartz.Web
             ViewEngine.Init();
             SchedulerProvider = Configuration.ConfigUtils.SchedulerProvider;
             SchedulerProvider.Init();
-            SchedulerDataProvider = new DefaultSchedulerDataProvider(SchedulerProvider);
+            SchedulerDataProvider = new DefaultSchedulerDataProvider(SchedulerProvider, new JobLogProvider());
         }
 
         public PagesHandler()
@@ -42,6 +42,9 @@ namespace CrystalQuartz.Web
                    new DefaultRequestHandler(
                        new SingleParamRequestMatcher("page", "job"),
                        new JobFiller(ViewEngine, SchedulerDataProvider)),
+                   new DefaultRequestHandler(
+                       new SingleParamRequestMatcher("page", "jobLogs"),
+                       new JobLogsFiller(ViewEngine, SchedulerDataProvider)),
                    new DefaultRequestHandler(
                        new SingleParamRequestMatcher("command", "scheduler-stop"),
                        new StopSchedulerFiller(SchedulerProvider)),

@@ -10,14 +10,16 @@
 			#if ($job.CanStart)
 				<a href="CrystalQuartzPanel.axd?command=job-resume&job=${job.Name}&group=${job.GroupName}">Resume all</a>
       #end
-      <a href="CrystalQuartzPanel.axd?command=job-trigger&job=${job.Name}&group=${job.GroupName}">Execute Now</a>
+        <a href="CrystalQuartzPanel.axd?command=job-trigger&job=${job.Name}&group=${job.GroupName}">Execute Now</a>
 			#if (!($job.CanStart || $job.CanPause))
-				<div class='none'>No actions for complete job</div>
+      <div class='none'>No actions for complete job</div>
 			#end
 		</div>
 		#statusImage($job)
 	</div>
-	<h3><a href='CrystalQuartzPanel.axd?page=job&job=${job.Name}&group=${job.GroupName}'>$job.Name</a></h3>
+	<h3><a href='CrystalQuartzPanel.axd?page=job&job=${job.Name}&group=${job.GroupName}'>$job.Name</a>
+	(<a href='CrystalQuartzPanel.axd?page=jobLogs&job=${job.Name}&group=${job.GroupName}'>View Logs</a>)
+	</h3>
 			#foreach($trigger in $job.Triggers)
 			#beforeall
 			<table class="data">
